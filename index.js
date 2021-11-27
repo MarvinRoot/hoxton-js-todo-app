@@ -144,9 +144,22 @@ function renderIncompletedTodos(){
     }
 }
 
+function renderAddTodo() {
+    const textInput = document.querySelector('.text-input')
+
+    const submitButton = document.querySelector('.submit-button')
+    submitButton.addEventListener('click', function(event){
+        event.preventDefault()
+        addTodo({ title: textInput.value, completed: false})
+        textInput.value = ''
+        render()
+    })  
+}
+
 function render() {
     renderCompletedTodos()
     renderIncompletedTodos()
+    renderAddTodo()
 }
 
 render()
