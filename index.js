@@ -45,18 +45,11 @@ function toggleTodo(todo){
     todo.completed = !todo.completed
 }
 
-{/* <li class="todo">
-  <div class="completed-section">
-    <input class="completed-checkbox" type="checkbox" />
-  </div>
-  <div class="text-section">
-    <p class="text">Go shopping</p>
-  </div>
-  <div class="button-section">
-    <button class="edit">Edit</button>
-    <button class="delete">Delete</button>
-  </div>
-</li> */}
+function deleteTodo(text){
+    state.todos = state.todos.filter(function(todo){
+        return todo.title != text
+    })
+}
 
 function renderCompletedTodos() {
     const completedTodos = getCompletedTodos()
@@ -95,7 +88,10 @@ function renderCompletedTodos() {
             toggleTodo(todo)
             render()
         })
-
+        deleteButton.addEventListener('click', function(){
+            deleteTodo(todo.title)
+            render()
+        })
         liEl.append(completedSection, textSection, buttonSection)
         completedList.append(liEl)
     }
@@ -139,7 +135,10 @@ function renderIncompletedTodos(){
             toggleTodo(todo)
             render()
         })
-
+        deleteButton.addEventListener('click', function(){
+            deleteTodo(todo.title)
+            render()
+        })
         liEl.append(todoSection, textSection, buttonSection)
         todoList.append(liEl)
     }
