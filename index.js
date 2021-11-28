@@ -22,7 +22,8 @@ const state = {
             title: 'Make dinner',
             completed: false
         }
-    ]
+    ],
+    showCompletedSection: true
 }
 
 function addTodo(todo) {
@@ -156,10 +157,25 @@ function renderAddTodo() {
     })  
 }
 
+function renderShowCompleted() {
+    const completedSection = document.querySelector('.completed-section')
+    if(state.showCompletedSection) {
+        completedSection.style.display = 'block'
+    }else {
+        completedSection.style.display = 'none'
+    }
+
+    showCompletedCheckbox.addEventListener('click', function(){
+        state.showCompletedSection = showCompletedCheckbox.checked
+        render()
+    })  
+}
+
 function render() {
     renderCompletedTodos()
     renderIncompletedTodos()
     renderAddTodo()
+    renderShowCompleted()
 }
 
 render()
