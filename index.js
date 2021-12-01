@@ -145,18 +145,6 @@ function renderIncompletedTodos(){
     }
 }
 
-function renderAddTodo() {
-    const textInput = document.querySelector('.text-input')
-
-    const submitButton = document.querySelector('.submit-button')
-    submitButton.addEventListener('click', function(event){
-        event.preventDefault()
-        addTodo({ title: textInput.value, completed: false})
-        textInput.value = ''
-        render()
-    })  
-}
-
 function renderShowCompleted() {
     const completedSection = document.querySelector('.completed-section')
     if(state.showCompletedSection) {
@@ -171,11 +159,22 @@ function renderShowCompleted() {
     })  
 }
 
+function addTodos() {
+    const textInput = document.querySelector('.text-input')
+
+    const submitButton = document.querySelector('.submit-button')
+    submitButton.addEventListener('click', function(event){
+        event.preventDefault()
+        addTodo({ title: textInput.value, completed: false})
+        textInput.value = ''
+        render()
+    })  
+}
+
 function render() {
     renderCompletedTodos()
     renderIncompletedTodos()
-    renderAddTodo()
     renderShowCompleted()
 }
-
+addTodos()
 render()
