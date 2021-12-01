@@ -159,7 +159,7 @@ function renderShowCompleted() {
     })  
 }
 
-function addTodos() {
+function listenToAddTodoForm() {
     const textInput = document.querySelector('.text-input')
 
     const submitButton = document.querySelector('.submit-button')
@@ -176,5 +176,5 @@ function render() {
     renderIncompletedTodos()
     renderShowCompleted()
 }
-addTodos()
+listenToAddTodoForm()
 render()
